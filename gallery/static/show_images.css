@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+title {
+    color : red;
+}
+.head_title {
+    color:#454545;
+    position: relative;
+    z-index: 2;
+}
+
+
+.wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 97.5vh;
+    background-color: white;
+    flex-direction: column;
+}
+
+.show_img {
+    width : 300px;
+    height : 400px;
+    overflow: hidden; /* 자식 div의 크기를 조절하기 위해 */
+    position: relative; /* 자식 div의 위치를 설정하기 위해 */
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+img {
+    display: block;
+    width: 100%; /* 이미지가 div 너비에 맞게 조절됨 */
+    height: 100%; /* 가로세로 비율 유지 */
+    object-fit: contain;
+}
+
+.loader {
+    display: none; /* 로딩바를 화면에서 완전히 숨깁니다. */
+}
+.return-button {
+    position: absolute;
+    left: 80%;
+    top : 70%;
+    background-color: #0F70E6;
+    height: 80px;
+    width: 200px;
+    border: none;
+    border-radius: 50px;
+    z-index: 12;
+    color : white;
+    &:hover {
+      background: #127DFF;
+      color: white;
+    }
+}
+
+.box {
+    width: 98%;
+    height: 700px;
+    border-radius: 5px;
+    box-shadow: 0 2px 30px rgba(black, .2);
+    background: lighten(#f0f4c3, 10%);
+    position: absolute;
+    overflow: hidden;
+    transform: translate3d(0, 0, 0);
+    z-index: 1;
+  }
+  
+  .wave {
+    opacity: .4;
+    position: absolute;
+    top: -120%;
+    left: 21%;
+    background: #0af;
+    width: 1500px;
+    height: 1500px;
+    margin-left: -250px;
+    margin-top: -250px;
+    transform-origin: 50% 48%;
+    border-radius: 43%;
+    animation: drift 5000ms infinite linear;
+  }
+  
+  .wave.-three {
+    animation: drift 7000ms infinite linear;
+  }
+  
+  .wave.-two {
+    animation: drift 10000ms infinite linear;
+    opacity: .1;
+    background: yellow;
+  }
+  
+  .box:after {
+    content: '';
+    display: block;
+    position: relative;
+    left: 0;
+    top: -30%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #EA8AAC, rgba(182, 137, 226, 0) 80%, rgba(255, 255, 255, 0.5));
+    z-index: 11;
+    transform: translate3d(0, 0, 0);
+  }
+  
+  
+  @keyframes drift {
+    from { transform: rotate(0deg); }
+    from { transform: rotate(360deg); }
+  }
+  
+  .h2 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    line-height: 300px;
+    text-align: center;
+    transform: translate3d(0, 0, 0);
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: .4em;
+    font-size: 24px;
+    text-shadow: 0 1px 0 rgba(black, .1);
+    text-indent: .3em;
+  }
+  
+  .fairy {
+    font-family: "Playfair Display",serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: .4em;
+    font-size: 40px;
+    text-shadow: 0 1px 0 rgba(black, .1);
+    text-indent: .3em;
+  }
+
+  button {
+    background-color: #0F70E6;
+    height: 80px;
+    width: 200px;
+    border: none;
+    position: relative;
+    top : 30%;
+    border-radius: 50px;
+    z-index: 12;
+    color : white;
+    &:hover {
+      background: #127DFF;
+      color: white;
+    }
+  }
+
+  .custom-btn {
+    width: 200px;
+    height: 80px;
+    color: #fff;
+    border-radius: 50px;
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: #127DFF;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+     box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+     7px 7px 20px 0px rgba(0,0,0,.1),
+     4px 4px 5px 0px rgba(0,0,0,.1);
+    outline: none;
+    left: 200%;
+    top : -150px;
+  }
+
+  .btn-16 {
+    border: none;
+    color: white;
+  }
+  .btn-16:after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    top: 0;
+    left: 0;
+    direction: rtl;
+    z-index: -1;
+    box-shadow:
+     -7px -7px 20px 0px #fff9,
+     -4px -4px 5px 0px #fff9,
+     7px 7px 20px 0px #0002,
+     4px 4px 5px 0px #0001;
+    transition: all 0.3s ease;
+  }
+  .btn-16:hover {
+    color: white;
+  }
+  .btn-16:hover:after {
+    left: auto;
+    right: 0;
+    width: 100%;
+    border-radius: 50px;
+  }
+  .btn-16:active {
+    transform: translateY(-40px);
+  }

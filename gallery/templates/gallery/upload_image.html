@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="{% static 'upload_image.css'%}">
+<html>
+<head>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> 
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script> 
+    <title>Upload Image</title>
+    <script>
+        function previewImage(input, previewId, fileNameId) {
+            var preview = document.getElementById(previewId);
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block'; // 이미지 미리보기 표시
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+            var fileName = input.value.split('\\').pop(); // 파일 경로에서 파일 이름 추출
+            document.getElementById(fileNameId).innerText = fileName; // 파일명을 표시하는 요소에 파일 이름 설정
+        }
+    </script>
+</head>
+<body>
+    <div class='box'>
+        <div class='wave -one'></div>
+        <div class='wave -two'></div>
+        <div class='wave -three'></div>
+    </div>
+    <div class="wrap">
+        <div class='head_title' align=center>
+            <h2 style="position: relative; z-index: 2;"><font class = 'fairy'>Upload Image</font></h2>
+        </div>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class = 'custom-file-upload'>
+                <label for="file-upload" class="clothes-upload-button" align="center">
+                    <div class = 'custom-btn btn-16'><b>model file</b></div>
+                </label>
+                <input type="file" id="file-upload" name="image" align="center" onchange="previewImage(this, 'image-preview', 'file-name');" accept="image/*">
+                <!-- 파일 이름을 표시할 요소 -->
+                
+                <div class = 'upload-image-cover'>
+                    <img id="image-preview" src="#" alt="Image Preview" class="img-custom-clothes" style="max-width: 100%; max-height: 300px; margin-top: 10px; display: none; border-radius: 10px;">
+                </div>
+                {% if request.FILES.image %}
+                    <p>File name: {{ request.FILES.image.name }}</p>
+                {% endif %}
+            </div>
+
+
+
+            <div class = 'custom-file-upload'>
+                <label for="file-upload2" class="custom-file-upload2" data-file-name="" align="center">
+                    <div class = 'custom-btn btn-16'><b>clothes file</b></div>
+                </label>
+                <input type="file" id="file-upload2" name="image2" align="center" onchange="previewImage(this, 'image-preview2', 'file-name2');" accept="image/*">
+                <!--<p id="file-name2" style="top: 10px; position: absolute;"></p>  파일 이름을 표시할 요소 -->
+                <div class = 'upload-image-cover'>
+                    <img id="image-preview2" src="#" alt="Image Preview" class="img-custom-model" style="max-width: 100%; max-height: 300px; margin-top: 10px; display: none; border-radius: 10px;">
+                </div>
+                {% if request.FILES.image2 %}
+                    <p>File name: {{ request.FILES.image2.name }}</p>
+                {% endif %}
+            </div>
+            
+            <button type="submit" class = 'custom-btn btn-16 button-upload' style = "font-size: 20px; width:200px; height: 80px;"><b>Upload</b></button>
+        </form>
+    </div>
+    <div style="position:relative;height:100px;">
+        <div class="btn-motion5">
+          <span></span>
+        </div>
+    </div>
+
+
+
+
+    <script> 
+        AOS.init(); 
+    </script>
+    <div style = "margin-left: 45%; font-size: 40px; margin-top: 10%;" data-aos="fade-up" data-aos-duration="1000" data-aos-easing="ease-in-sine">
+        <font style="color : #454545"><b>How to</b></font>
+    </div>
+    <div class="how_to" data-aos="fade-up" data-aos-duration="1000" data-aos-easing="ease-in-sine">
+        <div class = 'how_clothes'>
+            <div class = 'upload-image-cover'>
+                <img src = "/media/images/00034_00.jpg" alt="Image" style="max-width: 100%; max-height: 300px; border-radius: 10px;">
+            </div>
+            <label class="how_c_button" align="center">
+                <div class="btn-upload-how"><b>model file</b></div>
+            </label>
+        </div>
+
+        <div class = 'how_model'>
+            <div class = 'upload-image-cover'>
+                <img src = "/media/images/00462_00.jpg" alt="Image" style="max-width: 100%; max-height: 300px; border-radius: 10px;">
+            </div>
+            <label class="how_m_button" data-file-name="" align="center">
+                <div class="btn-upload-how"><b>clothes file</b></div>
+            </label>
+        </div>
+
+    </div>
+    <div class="how_to_generate" data-aos="fade-up" data-aos-duration="1000" data-aos-easing="ease-in-sine">
+        <div class="head_title" align="center">
+            <h2>Generated Image</h2>
+        </div>
+        <div class="show_img">
+            <img src = "/media/images/졸작_생성.jpg" alt="Image" style="max-width: 100%; max-height: 100%; border-radius: 10px;">
+        </div>
+
+    </div>
+</body>
+</html>
