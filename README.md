@@ -43,6 +43,8 @@ Django: 웹 서비스 구현
 
 
 VITON-HD : https://github.com/shadow2496/VITON-HD
+
 DensePose : https://github.com/facebookresearch/DensePose
+
 Segmentation : https://github.com/GoGoDuck912/Self-Correction-Human-Parsing
 
